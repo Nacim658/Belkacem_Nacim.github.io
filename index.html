@@ -3,145 +3,591 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Belkacem Nacim | Portfolio</title>
-
+<title>Nacim Belkacem — Réseaux &amp; Télécommunications</title>
+<meta name="description" content="Portfolio de Nacim Belkacem, alternant en Réseaux &amp; Télécommunications — Master à l'Université Paris-Saclay. Disponible septembre 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  :root{
+    --bg:#0a1220;
+    --bg-2:#0d1729;
+    --surface:#111f36;
+    --surface-2:#152742;
+    --line:#22324e;
+    --cyan:#39e6c4;
+    --cyan-dim:#1c8f79;
+    --amber:#ffb238;
+    --text:#eaf1f8;
+    --text-dim:#8ea2bd;
+    --text-faint:#5b6d88;
+    --radius:2px;
+    --disp:'Space Grotesk', sans-serif;
+    --body:'Inter', sans-serif;
+    --mono:'JetBrains Mono', monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    line-height:1.6;
+    overflow-x:hidden;
+    background-image:
+      linear-gradient(var(--bg-2) 1px, transparent 1px),
+      linear-gradient(90deg, var(--bg-2) 1px, transparent 1px);
+    background-size:64px 64px;
+    background-position:center top;
+  }
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
+  ::selection{background:var(--cyan); color:#04150f;}
 
-body{
-    margin:0;
-    font-family:Arial, Helvetica, sans-serif;
-    background:#f4f6f9;
-}
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(10,18,32,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    max-width:1120px; margin:0 auto; padding:18px 32px;
+  }
+  .logo{
+    font-family:var(--mono); font-size:14px; letter-spacing:0.5px; color:var(--text);
+    display:flex; align-items:center; gap:8px;
+  }
+  .logo .dot{width:7px; height:7px; border-radius:50%; background:var(--cyan); box-shadow:0 0 8px var(--cyan); animation:blink 2.4s ease-in-out infinite;}
+  @keyframes blink{0%,100%{opacity:1;}50%{opacity:.35;}}
+  .navlinks{display:flex; gap:36px; font-family:var(--mono); font-size:12.5px; letter-spacing:0.6px; text-transform:uppercase;}
+  .navlinks a{color:var(--text-dim); position:relative; padding:4px 0; transition:color .25s;}
+  .navlinks a:hover{color:var(--cyan);}
+  .navlinks a::after{content:''; position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--cyan); transition:width .25s;}
+  .navlinks a:hover::after{width:100%;}
+  .navcta{
+    font-family:var(--mono); font-size:12px; letter-spacing:.5px; color:var(--bg);
+    background:var(--cyan); padding:9px 16px; border-radius:var(--radius);
+    text-transform:uppercase; white-space:nowrap; transition:transform .2s, box-shadow .2s;
+  }
+  .navcta:hover{transform:translateY(-1px); box-shadow:0 4px 18px rgba(57,230,196,.35);}
+  .burger{display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none;}
+  .burger span{width:22px; height:2px; background:var(--text);}
+  .mobile-menu{display:none; flex-direction:column; gap:0; background:var(--bg-2); border-bottom:1px solid var(--line);}
+  .mobile-menu a{padding:16px 32px; border-top:1px solid var(--line); font-family:var(--mono); font-size:13px; color:var(--text-dim); text-transform:uppercase;}
+  .mobile-menu.open{display:flex;}
 
-header{
-    background:#003366;
-    color:white;
-    padding:60px 20px;
-    text-align:center;
-}
+  @media (max-width:860px){
+    .navlinks, .navcta{display:none;}
+    .burger{display:flex;}
+  }
 
-header h1{
-    font-size:45px;
-    margin-bottom:10px;
-}
+  section{position:relative; padding:120px 0; border-bottom:1px solid var(--line);}
+  .eyebrow{
+    font-family:var(--mono); font-size:12.5px; letter-spacing:2px; text-transform:uppercase;
+    color:var(--cyan); display:flex; align-items:center; gap:10px; margin-bottom:18px;
+  }
+  .eyebrow::before{content:''; width:22px; height:1px; background:var(--cyan);}
+  h1,h2,h3{font-family:var(--disp); font-weight:600; color:var(--text);}
+  .section-title{font-size:clamp(28px,4vw,40px); margin-bottom:48px; max-width:640px;}
+  .section-title span{color:var(--cyan);}
 
-header p{
-    font-size:22px;
-}
+  /* ---------- HERO ---------- */
+  .hero{padding:180px 0 120px 0; border-bottom:1px solid var(--line);}
+  .hero-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;}
+  .hero-tag{font-family:var(--mono); font-size:13px; letter-spacing:2px; text-transform:uppercase; color:var(--amber); margin-bottom:22px;}
+  .hero h1{font-size:clamp(38px,6vw,64px); line-height:1.05; letter-spacing:-1px; margin-bottom:22px;}
+  .hero h1 em{font-style:normal; color:var(--cyan);}
+  .hero-sub{font-size:17px; color:var(--text-dim); max-width:520px; margin-bottom:36px;}
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:44px;}
+  .btn{
+    font-family:var(--mono); font-size:13px; letter-spacing:.5px; text-transform:uppercase;
+    padding:14px 24px; border-radius:var(--radius); transition:all .2s; display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-solid{background:var(--cyan); color:#04150f;}
+  .btn-solid:hover{transform:translateY(-2px); box-shadow:0 6px 22px rgba(57,230,196,.3);}
+  .btn-ghost{border:1px solid var(--line); color:var(--text);}
+  .btn-ghost:hover{border-color:var(--cyan); color:var(--cyan);}
+  .hero-meta{display:flex; gap:28px; flex-wrap:wrap; font-family:var(--mono); font-size:12.5px; color:var(--text-faint);}
+  .hero-meta b{color:var(--text-dim); font-weight:500;}
 
-section{
-    max-width:1000px;
-    margin:auto;
-    background:white;
-    margin-top:30px;
-    padding:30px;
-    border-radius:10px;
-    box-shadow:0 0 15px rgba(0,0,0,.1);
-}
+  .hero-visual{position:relative; height:420px;}
+  .hero-visual svg{width:100%; height:100%;}
+  .pulse-path{stroke-dasharray:6 10; animation:dash 3s linear infinite;}
+  @keyframes dash{to{stroke-dashoffset:-160;}}
+  .node-label{font-family:var(--mono); font-size:10.5px; fill:var(--text-dim); text-transform:uppercase; letter-spacing:.5px;}
+  .node-dot{fill:var(--bg); stroke:var(--cyan); stroke-width:2;}
+  .node-dot.warm{stroke:var(--amber);}
+  .node-glow circle{animation:glow 2.4s ease-in-out infinite;}
+  @keyframes glow{0%,100%{opacity:.15;}50%{opacity:.5;}}
 
-h2{
-    color:#003366;
-}
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid; grid-template-columns:280px 1fr; gap:64px;}
+  .about-photo{
+    width:220px; height:220px; border-radius:var(--radius); border:1px solid var(--line);
+    background:var(--surface); display:flex; align-items:center; justify-content:center;
+    font-family:var(--disp); font-size:44px; color:var(--cyan); position:relative; overflow:hidden;
+  }
+  .about-photo img{width:100%; height:100%; object-fit:cover; display:none;}
+  .about-photo::after{content:'REMPLACER : assets/photo.jpg'; position:absolute; bottom:8px; left:8px; right:8px; font-family:var(--mono); font-size:9px; color:var(--text-faint); text-align:center;}
+  .about-text p{color:var(--text-dim); font-size:16px; margin-bottom:18px; max-width:640px;}
+  .about-tags{display:flex; flex-wrap:wrap; gap:10px; margin-top:28px;}
+  .tag{font-family:var(--mono); font-size:11.5px; letter-spacing:.4px; color:var(--text-dim); border:1px solid var(--line); padding:7px 12px; border-radius:var(--radius);}
+  .tag.on{color:var(--cyan); border-color:var(--cyan-dim);}
 
-.btn{
-    display:inline-block;
-    margin-top:20px;
-    background:#0055cc;
-    color:white;
-    text-decoration:none;
-    padding:12px 25px;
-    border-radius:8px;
-}
+  /* ---------- TIMELINE ---------- */
+  .timeline{position:relative; padding-left:36px;}
+  .timeline::before{content:''; position:absolute; left:6px; top:6px; bottom:6px; width:1px; background:linear-gradient(var(--cyan), var(--line));}
+  .t-item{position:relative; padding-bottom:48px;}
+  .t-item:last-child{padding-bottom:0;}
+  .t-item::before{content:''; position:absolute; left:-36px; top:4px; width:13px; height:13px; border-radius:50%; background:var(--bg); border:2px solid var(--cyan);}
+  .t-year{font-family:var(--mono); font-size:12px; color:var(--amber); letter-spacing:1px; margin-bottom:6px;}
+  .t-title{font-family:var(--disp); font-size:19px; margin-bottom:4px;}
+  .t-place{font-size:13.5px; color:var(--text-faint); margin-bottom:10px; font-style:italic;}
+  .t-desc{color:var(--text-dim); font-size:14.5px; max-width:600px;}
 
-footer{
-    text-align:center;
-    padding:30px;
-    color:#666;
-}
+  /* ---------- CARDS GRID (diplomes / stages / projets) ---------- */
+  .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:22px;}
+  .card{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:28px; transition:border-color .25s, transform .25s;
+  }
+  .card:hover{border-color:var(--cyan-dim); transform:translateY(-3px);}
+  .card-icon{width:38px; height:38px; border:1px solid var(--line); border-radius:var(--radius); display:flex; align-items:center; justify-content:center; margin-bottom:18px; color:var(--cyan);}
+  .card h3{font-size:18px; margin-bottom:8px;}
+  .card .meta{font-family:var(--mono); font-size:11.5px; color:var(--amber); margin-bottom:12px; letter-spacing:.4px;}
+  .card p{color:var(--text-dim); font-size:14px; margin-bottom:16px;}
+  .card ul{list-style:none; color:var(--text-dim); font-size:13.5px;}
+  .card ul li{padding-left:16px; position:relative; margin-bottom:6px;}
+  .card ul li::before{content:'→'; position:absolute; left:0; color:var(--cyan);}
+  .file-link{
+    display:inline-flex; align-items:center; gap:6px; font-family:var(--mono); font-size:11.5px;
+    color:var(--cyan); border-bottom:1px dashed var(--cyan-dim); padding-bottom:2px;
+  }
+  .placeholder-note{font-family:var(--mono); font-size:10px; color:var(--text-faint); margin-top:10px;}
 
+  /* ---------- SKILLS ---------- */
+  .skills-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px 56px;}
+  .skill-group h4{font-family:var(--mono); font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-faint); margin-bottom:20px;}
+  .skill-row{margin-bottom:16px;}
+  .skill-row-top{display:flex; justify-content:space-between; font-size:13.5px; margin-bottom:6px; color:var(--text-dim);}
+  .skill-bar{height:4px; background:var(--surface-2); border-radius:2px; overflow:hidden;}
+  .skill-bar-fill{height:100%; background:linear-gradient(90deg, var(--cyan-dim), var(--cyan)); border-radius:2px;}
+  .tools-cloud{display:flex; flex-wrap:wrap; gap:10px; margin-top:8px;}
+
+  /* ---------- CV ---------- */
+  .cv-box{
+    display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
+    background:var(--surface); border:1px solid var(--line); padding:36px; border-radius:var(--radius);
+  }
+  .cv-box h3{font-size:20px; margin-bottom:8px;}
+  .cv-box p{color:var(--text-dim); font-size:14px;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px;}
+  .contact-card{border:1px solid var(--line); padding:24px; border-radius:var(--radius); transition:border-color .25s;}
+  .contact-card:hover{border-color:var(--cyan-dim);}
+  .contact-card .label{font-family:var(--mono); font-size:10.5px; letter-spacing:1px; text-transform:uppercase; color:var(--text-faint); margin-bottom:8px;}
+  .contact-card .value{font-size:15px; color:var(--text);}
+
+  footer{padding:40px 0; text-align:center; font-family:var(--mono); font-size:11.5px; color:var(--text-faint);}
+
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.visible{opacity:1; transform:translateY(0);}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-visual{height:280px; order:-1;}
+    .about-grid{grid-template-columns:1fr;}
+    .skills-grid{grid-template-columns:1fr;}
+    section{padding:80px 0;}
+    .hero{padding:140px 0 80px;}
+  }
 </style>
-
 </head>
-
 <body>
 
 <header>
-
-<h1>Belkacem Nacim</h1>
-
-<p>Étudiant en Master Réseaux & Télécommunications</p>
-
-<a class="btn" href="#">Je recherche une alternance - Septembre 2026</a>
-
+  <nav>
+    <div class="logo"><span class="dot"></span>N.BELKACEM</div>
+    <div class="navlinks">
+      <a href="#about">Profil</a>
+      <a href="#parcours">Parcours</a>
+      <a href="#experiences">Expériences</a>
+      <a href="#projets">Projets</a>
+      <a href="#competences">Compétences</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="assets/cv.pdf" class="navcta" style="display:none" id="navcta-desktop">CV ↓</a>
+    <button class="burger" id="burger"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">Profil</a>
+    <a href="#parcours">Parcours</a>
+    <a href="#experiences">Expériences</a>
+    <a href="#projets">Projets</a>
+    <a href="#competences">Compétences</a>
+    <a href="#contact">Contact</a>
+  </div>
 </header>
 
-<section>
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-tag">Réseaux · Télécommunications · Cybersécurité</div>
+      <h1>Nacim Belkacem — je construis les <em>liaisons</em> qui font tenir le réseau.</h1>
+      <p class="hero-sub">Admis en Master Réseaux &amp; Télécommunications à l'Université Paris-Saclay. Je recherche une <b style="color:var(--text)">alternance de 2 ans à partir de septembre 2026</b> (2 jours université / 3 jours entreprise) en réseaux, systèmes, cybersécurité ou fibre optique.</p>
+      <div class="hero-actions">
+        <a href="assets/cv.pdf" class="btn btn-solid">Télécharger le CV</a>
+        <a href="#contact" class="btn btn-ghost">Me contacter</a>
+      </div>
+      <div class="hero-meta">
+        <span><b>Localisation</b> — Orsay, France · mobile Île-de-France</span>
+        <span><b>Disponibilité</b> — Septembre 2026</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <svg viewBox="0 0 420 420" fill="none">
+        <line x1="40" y1="340" x2="200" y2="220" stroke="#22324e" stroke-width="1.5"/>
+        <line x1="200" y1="220" x2="360" y2="300" stroke="#22324e" stroke-width="1.5"/>
+        <line x1="200" y1="220" x2="220" y2="80" stroke="#22324e" stroke-width="1.5"/>
+        <line x1="220" y1="80" x2="360" y2="60" stroke="#22324e" stroke-width="1.5"/>
+        <line x1="220" y1="80" x2="70" y2="60" stroke="#22324e" stroke-width="1.5"/>
 
-<h2>À propos</h2>
+        <line x1="40" y1="340" x2="200" y2="220" stroke="#39e6c4" stroke-width="1.5" class="pulse-path"/>
+        <line x1="200" y1="220" x2="220" y2="80" stroke="#39e6c4" stroke-width="1.5" class="pulse-path" style="animation-delay:-1s"/>
+        <line x1="220" y1="80" x2="360" y2="60" stroke="#39e6c4" stroke-width="1.5" class="pulse-path" style="animation-delay:-2s"/>
 
-<p>
+        <g class="node-glow"><circle cx="200" cy="220" r="20" fill="#39e6c4"/></g>
+        <circle class="node-dot" cx="200" cy="220" r="7"/>
+        <text x="214" y="225" class="node-label">CŒUR RÉSEAU</text>
 
-Bienvenue sur mon portfolio professionnel.
+        <circle class="node-dot" cx="40" cy="340" r="6"/>
+        <text x="10" y="362" class="node-label">FIBRE FTTH</text>
 
-Je suis étudiant en Réseaux & Télécommunications et je recherche une alternance de deux ans en Île-de-France.
+        <circle class="node-dot" cx="360" cy="300" r="6"/>
+        <text x="322" y="322" class="node-label">CLOUD</text>
 
-</p>
+        <circle class="node-dot warm" cx="220" cy="80" r="6"/>
+        <text x="234" y="80" class="node-label">CYBERSÉCU</text>
 
+        <circle class="node-dot" cx="360" cy="60" r="6"/>
+        <text x="322" y="42" class="node-label">RECRUTEUR</text>
+
+        <circle class="node-dot" cx="70" cy="60" r="6"/>
+        <text x="10" y="42" class="node-label">CISCO / VLAN</text>
+      </svg>
+    </div>
+  </div>
 </section>
 
-<section>
-
-<h2>Compétences</h2>
-
-<ul>
-
-<li>Réseaux Cisco</li>
-
-<li>Linux</li>
-
-<li>Windows Server</li>
-
-<li>Python</li>
-
-<li>C++</li>
-
-<li>Cybersécurité</li>
-
-<li>FTTH / Fibre Optique</li>
-
-</ul>
-
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="about-photo"><img src="assets/photo.jpg" alt="Photo de Nacim Belkacem" onerror="this.style.display='none'">BN</div>
+    </div>
+    <div class="reveal">
+      <div class="eyebrow">Profil</div>
+      <h2 class="section-title">À propos</h2>
+      <div class="about-text">
+        <p>Je m'appelle <b style="color:var(--text)">Nacim Belkacem</b>, admis en Master Réseaux &amp; Télécommunications à l'Université Paris-Saclay après une licence en Télécommunications à l'Université Mouloud Mammeri de Tizi-Ouzou. J'ai effectué plusieurs stages pratiques chez Algérie Télécom, Naftal et l'ENIEM, où j'ai découvert la configuration de réseaux Cisco, le déploiement de fibre optique FTTH/FTTX et l'administration de bases de données industrielles.</p>
+        <p>Je recherche aujourd'hui une <b style="color:var(--text)">alternance de 2 ans</b> pour mettre ces bases en pratique sur des sujets réseaux, systèmes, cybersécurité ou fibre optique, dans une entreprise qui saura accompagner ma progression.</p>
+      </div>
+      <div class="about-tags">
+        <span class="tag on">Réseaux &amp; cybersécurité</span>
+        <span class="tag on">Administration systèmes / IT</span>
+        <span class="tag on">Fibre optique &amp; télécoms</span>
+        <span class="tag on">Cloud &amp; virtualisation</span>
+      </div>
+      <div class="about-tags">
+        <span class="tag">Français C1</span>
+        <span class="tag">Anglais B2</span>
+        <span class="tag">Arabe — langue maternelle</span>
+        <span class="tag">Kabyle — langue maternelle</span>
+        <span class="tag">Permis B</span>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section>
-
-<h2>Expériences</h2>
-
-<h3>Algérie Télécom</h3>
-
-<p>Stage en réseaux et fibre optique.</p>
-
-<h3>Naftal</h3>
-
-<p>Stage en systèmes d'information.</p>
-
+<!-- ================= PARCOURS ================= -->
+<section id="parcours">
+  <div class="wrap">
+    <div class="eyebrow">Formation</div>
+    <h2 class="section-title reveal">Parcours <span>académique</span></h2>
+    <div class="timeline">
+      <div class="t-item reveal">
+        <div class="t-year">SEPT. 2026 →</div>
+        <div class="t-title">Master Réseaux &amp; Télécommunications — Admis</div>
+        <div class="t-place">Université Paris-Saclay, Paris, France</div>
+        <div class="t-desc">Pré-admission confirmée. Recherche d'un contrat d'alternance de 2 ans, rythme 2 jours université / 3 jours entreprise.</div>
+      </div>
+      <div class="t-item reveal">
+        <div class="t-year">2022 — 2025</div>
+        <div class="t-title">Licence Télécommunications</div>
+        <div class="t-place">Université Mouloud Mammeri, Tizi-Ouzou, Algérie</div>
+        <div class="t-desc">Réseaux informatiques (TCP/IP, routage, VLAN, OSPF) · administration Linux/Windows et virtualisation · transmission de données et fibre optique (FTTH/FTTX) · bases en C et Python.</div>
+      </div>
+      <div class="t-item reveal">
+        <div class="t-year">2021 — 2022</div>
+        <div class="t-title">Baccalauréat — Série scientifique</div>
+        <div class="t-place">Lycée Krim Belkacem, Draa Ben Khedda, Tizi-Ouzou</div>
+        <div class="t-desc">Mention obtenue à l'issue d'un cursus scientifique.</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section>
+<!-- ================= DIPLOMES ================= -->
+<section id="diplomes">
+  <div class="wrap">
+    <div class="eyebrow">Justificatifs</div>
+    <h2 class="section-title reveal">Diplômes &amp; attestations</h2>
+    <div class="grid">
+      <div class="card reveal">
+        <div class="card-icon">🎓</div>
+        <h3>Diplôme de Licence</h3>
+        <div class="meta">Télécommunications · 2025</div>
+        <p>Université Mouloud Mammeri de Tizi-Ouzou — Domaine Sciences et technologies.</p>
+        <a class="file-link" href="assets/diplomes/licence.pdf">↳ Voir le PDF</a>
+        <div class="placeholder-note">Fichier attendu : assets/diplomes/licence.pdf</div>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">🎓</div>
+        <h3>Diplôme du Baccalauréat</h3>
+        <div class="meta">Série scientifique · 2022</div>
+        <p>Office National des Examens et Concours — Mention Passable.</p>
+        <a class="file-link" href="assets/diplomes/bac.pdf">↳ Voir le PDF</a>
+        <div class="placeholder-note">Fichier attendu : assets/diplomes/bac.pdf</div>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">📄</div>
+        <h3>Attestation de stage — Algérie Télécom</h3>
+        <div class="meta">Systèmes &amp; Réseaux · Avril–Juin 2025</div>
+        <p>Direction Opérationnelle des Télécommunications de Tizi-Ouzou.</p>
+        <a class="file-link" href="assets/diplomes/stage-at-reseaux.pdf">↳ Voir le PDF</a>
+        <div class="placeholder-note">Fichier attendu : assets/diplomes/stage-at-reseaux.pdf</div>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">📄</div>
+        <h3>Attestation de stage — Algérie Télécom</h3>
+        <div class="meta">Fibre optique · Février–Mars 2025</div>
+        <p>Direction Opérationnelle des Télécommunications de Tizi-Ouzou.</p>
+        <a class="file-link" href="assets/diplomes/stage-at-fibre.pdf">↳ Voir le PDF</a>
+        <div class="placeholder-note">Fichier attendu : assets/diplomes/stage-at-fibre.pdf</div>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">📄</div>
+        <h3>Attestation de stage — ENIEM</h3>
+        <div class="meta">Réseaux &amp; télécommunication · Juin 2026</div>
+        <p>Direction Ressources Humaines, ENIEM, Oued-Aïssi, Tizi-Ouzou.</p>
+        <a class="file-link" href="assets/diplomes/stage-eniem.pdf">↳ Voir le PDF</a>
+        <div class="placeholder-note">Fichier attendu : assets/diplomes/stage-eniem.pdf</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<h2>Contact</h2>
+<!-- ================= EXPERIENCES ================= -->
+<section id="experiences">
+  <div class="wrap">
+    <div class="eyebrow">Expérience</div>
+    <h2 class="section-title reveal">Expériences <span>professionnelles</span></h2>
+    <div class="grid">
+      <div class="card reveal">
+        <div class="card-icon">⌁</div>
+        <h3>ENIEM</h3>
+        <div class="meta">Oued-Aïssi, Tizi-Ouzou · 2025 – 2026</div>
+        <ul>
+          <li>Découverte d'un système d'information industriel</li>
+          <li>Observation des infrastructures réseaux et systèmes</li>
+          <li>Initiation aux bases de données SQL</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">⌁</div>
+        <h3>Algérie Télécom — Fibre optique</h3>
+        <div class="meta">Tizi-Ouzou · 2024 – 2025</div>
+        <ul>
+          <li>Déploiement et maintenance de réseaux FTTH/FTTX</li>
+          <li>Raccordement fibre optique et mesures OTDR</li>
+          <li>Diagnostic des pannes réseau</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">⌁</div>
+        <h3>Algérie Télécom — Systèmes &amp; Réseaux</h3>
+        <div class="meta">Tizi-Ouzou · 2024 – 2025</div>
+        <ul>
+          <li>Configuration de routeurs et switches Cisco</li>
+          <li>Mise en œuvre de VLAN et routage OSPF</li>
+          <li>Administration des services réseau</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">⌁</div>
+        <h3>Naftal — Systèmes d'information</h3>
+        <div class="meta">Beraki, Algérie · 2024 – 2025</div>
+        <ul>
+          <li>Gestion de bases de données industrielles (SQL, PostgreSQL)</li>
+          <li>Analyse des flux réseau et optimisation des performances</li>
+          <li>Administration des services réseau (DHCP, DNS, IPv4/IPv6, ACL)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-<p>Email : ton.email@example.com</p>
+<!-- ================= PROJETS ================= -->
+<section id="projets">
+  <div class="wrap">
+    <div class="eyebrow">Réalisations</div>
+    <h2 class="section-title reveal">Projets académiques</h2>
+    <div class="grid">
+      <div class="card reveal">
+        <div class="card-icon">🛡</div>
+        <h3>Sécurité réseau</h3>
+        <div class="meta">Cisco Packet Tracer</div>
+        <p>Conception d'une topologie réseau sécurisée : VLAN, ACL, pare-feu et segmentation DMZ.</p>
+        <a class="file-link" href="assets/projets/securite-reseau.png">↳ Voir le visuel du projet</a>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">🤖</div>
+        <h3>Chatbot IA</h3>
+        <div class="meta">Python</div>
+        <p>Développement d'un agent conversationnel simple en Python pour automatiser des réponses.</p>
+        <a class="file-link" href="assets/projets/chatbot.png">↳ Voir le visuel du projet</a>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">📡</div>
+        <h3>IoT</h3>
+        <div class="meta">Arduino</div>
+        <p>Prototype connecté à base d'Arduino pour la collecte et la transmission de données de capteurs.</p>
+        <a class="file-link" href="assets/projets/iot.png">↳ Voir le visuel du projet</a>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">📶</div>
+        <h3>Antenne 4G</h3>
+        <div class="meta">Télécommunications</div>
+        <p>Étude et dimensionnement d'une antenne pour un lien de télécommunication 4G.</p>
+        <a class="file-link" href="assets/projets/antenne-4g.png">↳ Voir le visuel du projet</a>
+      </div>
+    </div>
+    <p class="placeholder-note" style="margin-top:18px;">Astuce : ajoute une capture d'écran ou un schéma pour chaque projet dans assets/projets/ (voir les instructions envoyées à côté de ce fichier).</p>
+  </div>
+</section>
 
-<p>LinkedIn : à ajouter</p>
+<!-- ================= COMPETENCES ================= -->
+<section id="competences">
+  <div class="wrap">
+    <div class="eyebrow">Savoir-faire</div>
+    <h2 class="section-title reveal">Compétences</h2>
+    <div class="skills-grid">
+      <div class="skill-group reveal">
+        <h4>Réseaux</h4>
+        <div class="skill-row"><div class="skill-row-top"><span>TCP/IP · VLAN · OSPF</span></div><div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div></div>
+        <div class="skill-row"><div class="skill-row-top"><span>Cisco (routeurs / switches)</span></div><div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div></div>
+        <div class="skill-row"><div class="skill-row-top"><span>DHCP · DNS · IPv4/IPv6</span></div><div class="skill-bar"><div class="skill-bar-fill" style="width:78%"></div></div></div>
 
+        <h4 style="margin-top:32px;">Cybersécurité</h4>
+        <div class="skill-row"><div class="skill-row-top"><span>VPN · Firewall · ACL · DMZ</span></div><div class="skill-bar"><div class="skill-bar-fill" style="width:65%"></div></div></div>
+      </div>
+      <div class="skill-group reveal">
+        <h4>Systèmes &amp; programmation</h4>
+        <div class="skill-row"><div class="skill-row-top"><span>Linux · Windows · Virtualisation</span></div><div class="skill-bar"><div class="skill-bar-fill" style="width:72%"></div></div></div>
+        <div class="skill-row"><div class="skill-row-top"><span>Python · SQL</span></div><div class="skill-bar"><div class="skill-bar-fill" style="width:70%"></div></div></div>
+        <div class="skill-row"><div class="skill-row-top"><span>C++ · MATLAB</span></div><div class="skill-bar"><div class="skill-bar-fill" style="width:55%"></div></div></div>
+
+        <h4 style="margin-top:32px;">Fibre &amp; télécoms</h4>
+        <div class="skill-row"><div class="skill-row-top"><span>FTTH/FTTX · OTDR</span></div><div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div></div>
+      </div>
+    </div>
+    <h4 style="margin-top:44px; font-family:var(--mono); font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-faint);">Outils</h4>
+    <div class="tools-cloud">
+      <span class="tag">Cisco Packet Tracer</span>
+      <span class="tag">Linux</span>
+      <span class="tag">Windows Server</span>
+      <span class="tag">Python</span>
+      <span class="tag">C++</span>
+      <span class="tag">MATLAB</span>
+      <span class="tag">Proteus</span>
+      <span class="tag">Code Composer Studio</span>
+      <span class="tag">Arduino IDE</span>
+      <span class="tag">Wireshark</span>
+      <span class="tag">Git / GitHub</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CV ================= -->
+<section id="cv">
+  <div class="wrap">
+    <div class="eyebrow">Document</div>
+    <h2 class="section-title reveal">CV complet</h2>
+    <div class="cv-box reveal">
+      <div>
+        <h3>Nacim Belkacem — CV (PDF)</h3>
+        <p>Le document complet avec toutes les expériences, formations et compétences.</p>
+      </div>
+      <a href="assets/cv.pdf" class="btn btn-solid">Télécharger le CV ↓</a>
+    </div>
+    <div class="placeholder-note" style="margin-top:10px;">Fichier attendu : assets/cv.pdf</div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" style="border-bottom:none;">
+  <div class="wrap">
+    <div class="eyebrow">Contact</div>
+    <h2 class="section-title reveal">Parlons de votre <span>alternance</span></h2>
+    <div class="contact-grid">
+      <a class="contact-card reveal" href="mailto:nassimbelkacem019@gmail.com">
+        <div class="label">Email</div>
+        <div class="value">nassimbelkacem019@gmail.com</div>
+      </a>
+      <a class="contact-card reveal" href="tel:+213559231399">
+        <div class="label">Téléphone</div>
+        <div class="value">+213 559 231 399</div>
+      </a>
+      <a class="contact-card reveal" href="https://www.linkedin.com/in/nacim-belkacem" target="_blank" rel="noopener">
+        <div class="label">LinkedIn</div>
+        <div class="value">/in/nacim-belkacem</div>
+      </a>
+      <a class="contact-card reveal" href="https://github.com/Nacim658" target="_blank" rel="noopener">
+        <div class="label">GitHub</div>
+        <div class="value">github.com/Nacim658</div>
+      </a>
+      <div class="contact-card reveal">
+        <div class="label">Localisation</div>
+        <div class="value">Orsay, France — mobile Île-de-France</div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <footer>
-
-© 2026 Belkacem Nacim
-
+  © 2026 Nacim Belkacem — Portfolio construit pour une alternance Réseaux &amp; Télécommunications.
 </footer>
+
+<script>
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+</script>
 
 </body>
 </html>
