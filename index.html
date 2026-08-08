@@ -169,6 +169,7 @@
     display:inline-flex; align-items:center; gap:6px; font-family:var(--mono); font-size:11.5px;
     color:var(--cyan); border-bottom:1px dashed var(--cyan-dim); padding-bottom:2px;
   }
+  .project-links{display:flex; flex-direction:column; gap:8px; align-items:flex-start;}
   .placeholder-note{font-family:var(--mono); font-size:10px; color:var(--text-faint); margin-top:10px;}
 
   /* ---------- SKILLS ---------- */
@@ -220,6 +221,7 @@
       <a href="#parcours">Parcours</a>
       <a href="#experiences">Expériences</a>
       <a href="#projets">Projets</a>
+      <a href="#certifications">Certifications</a>
       <a href="#competences">Compétences</a>
       <a href="#contact">Contact</a>
     </div>
@@ -231,6 +233,7 @@
     <a href="#parcours">Parcours</a>
     <a href="#experiences">Expériences</a>
     <a href="#projets">Projets</a>
+    <a href="#certifications">Certifications</a>
     <a href="#competences">Compétences</a>
     <a href="#contact">Contact</a>
   </div>
@@ -289,10 +292,7 @@
 
 <!-- ================= ABOUT ================= -->
 <section id="about">
-  <div class="wrap about-grid">
-    <div>
-      <div class="about-photo"><img src="assets/photo.jpg" alt="Photo de Nacim Belkacem" onerror="this.style.display='none'">BN</div>
-    </div>
+  <div class="wrap">
     <div class="reveal">
       <div class="eyebrow">Profil</div>
       <h2 class="section-title">À propos</h2>
@@ -323,6 +323,12 @@
     <div class="eyebrow">Formation</div>
     <h2 class="section-title reveal">Parcours <span>académique</span></h2>
     <div class="timeline">
+      <div class="t-item reveal">
+        <div class="t-year">2026 — 2027</div>
+        <div class="t-title">Master Réseaux &amp; Télécommunications — Voie apprentissage</div>
+        <div class="t-place">Université Paris-Saclay, Paris, France</div>
+        <div class="t-desc">Poursuite d'études en alternance, rythme université / entreprise.</div>
+      </div>
       <div class="t-item reveal">
         <div class="t-year">2025 — 2026</div>
         <div class="t-title">Master 1 Réseaux &amp; Télécommunication</div>
@@ -465,34 +471,139 @@
     <div class="grid">
       <div class="card reveal">
         <div class="card-icon">🛡</div>
-        <h3>Sécurité réseau</h3>
+        <h3>Architecture réseau sécurisée</h3>
+        <div class="meta">NetFlow · AAA · Syslog · Firewall</div>
+        <p>Architecture multi-segments avec routage statique, supervision Syslog/NetFlow, authentification centralisée AAA (TACACS+) et filtrage par pare-feu (ACL).</p>
+        <div class="project-links">
+          <a class="file-link" href="assets/projets/architecture-securisee-netflow-aaa.pdf">↳ Voir le rapport (PDF)</a>
+          <a class="file-link" href="assets/projets/architecture-securisee-netflow-aaa.pkt">↳ Simulation (.pkt)</a>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">📶</div>
+        <h3>Modem Huawei — PPPoE</h3>
+        <div class="meta">Configuration DSL réelle + simulation</div>
+        <p>Configuration complète d'un modem Huawei HG532e en PPPoE (interface web) et reproduction du scénario sur Cisco Packet Tracer, avec authentification CHAP/PAP.</p>
+        <div class="project-links">
+          <a class="file-link" href="assets/projets/modem-huawei-pppoe.pdf">↳ Voir le rapport (PDF)</a>
+          <a class="file-link" href="assets/projets/modem-huawei-pppoe.pkt">↳ Simulation (.pkt)</a>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">🌐</div>
+        <h3>Client PPPoE pour connexion DSL</h3>
         <div class="meta">Cisco Packet Tracer</div>
-        <p>Conception d'une topologie réseau sécurisée : VLAN, ACL, pare-feu et segmentation DMZ.</p>
-        <a class="file-link" href="assets/projets/securite-reseau.png">↳ Voir le visuel du projet</a>
+        <p>Simulation d'une connexion DSL via PPPoE entre un routeur client (Cust1) et un routeur FAI, authentification CHAP et attribution dynamique d'adresse IP.</p>
+        <div class="project-links">
+          <a class="file-link" href="assets/projets/pppoe-dsl-client-router.pdf">↳ Voir le rapport (PDF)</a>
+          <a class="file-link" href="assets/projets/pppoe-dsl-client-router.pkt">↳ Simulation (.pkt)</a>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">📁</div>
+        <h3>Services FTP, TFTP &amp; DHCP</h3>
+        <div class="meta">Cisco Packet Tracer</div>
+        <p>Mise en place et test des services FTP, TFTP et DHCP sur un réseau local : transfert de fichiers, gestion des permissions utilisateurs et attribution automatique d'adresses IP.</p>
+        <div class="project-links">
+          <a class="file-link" href="assets/projets/ftp-lab-report.pdf">↳ Voir le rapport (PDF)</a>
+          <a class="file-link" href="assets/projets/ftp-lab-report.pkt">↳ Simulation (.pkt)</a>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">🖧</div>
+        <h3>Interconnexion LAN — DHCP &amp; DNS</h3>
+        <div class="meta">Cisco Packet Tracer</div>
+        <p>Interconnexion de deux réseaux LAN via un routeur, avec serveurs DHCP et DNS, serveurs web multi-domaines et tests de résolution de noms.</p>
+        <div class="project-links">
+          <a class="file-link" href="assets/projets/router-config-dhcp-lan.pdf">↳ Voir le rapport (PDF)</a>
+          <a class="file-link" href="assets/projets/router-config-dhcp-lan.pkt">↳ Simulation (.pkt)</a>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">✉️</div>
+        <h3>Messagerie SMTP / POP3</h3>
+        <div class="meta">Cisco Packet Tracer</div>
+        <p>Déploiement d'un système de messagerie complet (SMTP, POP3, DNS, DHCP), tests d'envoi/réception et analyse de l'impact de la désactivation de chaque service.</p>
+        <div class="project-links">
+          <a class="file-link" href="assets/projets/smtp-lab-report.pdf">↳ Voir le rapport (PDF)</a>
+          <a class="file-link" href="assets/projets/smtp-lab-report.pkt">↳ Simulation (.pkt)</a>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">🏢</div>
+        <h3>Réseau haute densité — 3 niveaux</h3>
+        <div class="meta">Catalyst 3650 · OSPF</div>
+        <p>Architecture 3-tier (cœur, distribution, accès) avec Catalyst 3650, liaison WAN entre deux routeurs, VLANs et routage dynamique OSPF entre deux sites.</p>
+        <div class="project-links">
+          <a class="file-link" href="assets/projets/tp2-high-density-network.pdf">↳ Voir le rapport (PDF)</a>
+          <a class="file-link" href="assets/projets/tp2-high-density-network.pkt">↳ Simulation (.pkt)</a>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">🧩</div>
+        <h3>Modélisation réseau hiérarchique</h3>
+        <div class="meta">Cisco Packet Tracer · requiert Packet Tracer</div>
+        <p>Conception d'une architecture réseau hiérarchique et modulaire, organisée en couches cœur / distribution / accès pour une meilleure scalabilité.</p>
+        <div class="project-links">
+          <a class="file-link" href="assets/projets/hierarchical-network-modularity.pkt">↳ Simulation (.pkt)</a>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">🔐</div>
+        <h3>VPN IPsec site à site</h3>
+        <div class="meta">Cisco Packet Tracer · requiert Packet Tracer</div>
+        <p>Implémentation d'un tunnel VPN IPsec site à site entre deux réseaux distants pour sécuriser le trafic inter-sites.</p>
+        <div class="project-links">
+          <a class="file-link" href="assets/projets/site-to-site-ipsec-vpn.pkt">↳ Simulation (.pkt)</a>
+        </div>
       </div>
       <div class="card reveal">
         <div class="card-icon">🤖</div>
         <h3>Chatbot IA</h3>
-        <div class="meta">Python</div>
-        <p>Développement d'un agent conversationnel simple en Python pour automatiser des réponses.</p>
-        <a class="file-link" href="assets/projets/chatbot.png">↳ Voir le visuel du projet</a>
-      </div>
-      <div class="card reveal">
-        <div class="card-icon">📡</div>
-        <h3>IoT</h3>
-        <div class="meta">Arduino</div>
-        <p>Prototype connecté à base d'Arduino pour la collecte et la transmission de données de capteurs.</p>
-        <a class="file-link" href="assets/projets/iot.png">↳ Voir le visuel du projet</a>
-      </div>
-      <div class="card reveal">
-        <div class="card-icon">📶</div>
-        <h3>Antenne 4G</h3>
-        <div class="meta">Télécommunications</div>
-        <p>Étude et dimensionnement d'une antenne pour un lien de télécommunication 4G.</p>
-        <a class="file-link" href="assets/projets/antenne-4g.png">↳ Voir le visuel du projet</a>
+        <div class="meta">Python · Application web</div>
+        <p>Agent conversationnel déployé en ligne, développé en Python et accessible directement depuis le navigateur.</p>
+        <div class="project-links">
+          <a class="file-link" href="https://chatbot-boukhalfa-platform-updated.vercel.app" target="_blank" rel="noopener">↳ Voir la démo en ligne ↗</a>
+        </div>
       </div>
     </div>
-    <p class="placeholder-note" style="margin-top:18px;">Astuce : ajoute une capture d'écran ou un schéma pour chaque projet dans assets/projets/ (voir les instructions envoyées à côté de ce fichier).</p>
+  </div>
+</section>
+
+<!-- ================= CERTIFICATIONS ================= -->
+<section id="certifications">
+  <div class="wrap">
+    <div class="eyebrow">Formations complémentaires</div>
+    <h2 class="section-title reveal">Certifications</h2>
+    <div class="grid">
+      <div class="card reveal">
+        <div class="card-icon">🔷</div>
+        <h3>Cisco Networking Academy</h3>
+        <div class="meta">5 certificats · 2026</div>
+        <ul>
+          <li>Introduction à la cybersécurité</li>
+          <li>Introduction to IoT and Digital Transformation</li>
+          <li>Python Essentials 1</li>
+          <li>Notions de base sur les réseaux</li>
+          <li>Exploring Networking with Cisco Packet Tracer</li>
+        </ul>
+        <a class="file-link" href="assets/certifications/cisco-certificats.pdf" style="margin-top:10px;" target="_blank" rel="noopener">↳ Voir les certificats (PDF)</a>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">🐍</div>
+        <h3>Python Niveau 1 &amp; 2</h3>
+        <div class="meta">École Technique · Tizi-Ouzou · 2025</div>
+        <p>Formation complète en programmation Python, dispensée du 03/07/2025 au 06/09/2025.</p>
+        <a class="file-link" href="assets/certifications/python-niveau-1-2.pdf" target="_blank" rel="noopener">↳ Voir l'attestation (PDF)</a>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">🇨🇳</div>
+        <h3>Huawei — HCIA-Datacom V1.0</h3>
+        <div class="meta">Huawei Talent Online · Juin 2025</div>
+        <p>Certificat de fin de cours HCIA-Datacom, couvrant les fondamentaux des réseaux de datacenter Huawei.</p>
+        <a class="file-link" href="assets/certifications/huawei-hcia-datacom.pdf" target="_blank" rel="noopener">↳ Voir le certificat (PDF)</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -570,9 +681,8 @@
       </a>
       <a class="contact-card reveal" href="https://www.linkedin.com/in/nacim-belkacem-0a3bb9194/" target="_blank" rel="noopener">
         <div class="label">LinkedIn</div>
-        <div class="value">/in/nacim-belkacem-0a3bb9194/</div>
+        <div class="value">/in/nacim-belkacem-0a3bb9194</div>
       </a>
-
       <a class="contact-card reveal" href="https://github.com/Nacim658" target="_blank" rel="noopener">
         <div class="label">GitHub</div>
         <div class="value">github.com/Nacim658</div>
